@@ -1,8 +1,8 @@
 '''
 Author: hibana2077 hibana2077@gmaill.com
 Date: 2023-05-15 16:04:31
-LastEditors: hibana2077 hibana2077@gmaill.com
-LastEditTime: 2023-05-15 16:14:34
+LastEditors: hibana2077 hibana2077@gmail.com
+LastEditTime: 2023-05-16 20:53:45
 FilePath: /Farm-car/test_model/models.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
@@ -73,18 +73,4 @@ def create_cnn(width, height, depth, filters=(16, 32, 64), regress=False):
     model = Model(inputs, x)
 
     # return the CNN
-    return model
-
-def get_model():
-    model = Sequential()
-    model.add(Dense(8, input_dim=dim, activation="relu"))
-    model.add(Dense(4, activation="relu"))
-
-    # check to see if the regression node should be added
-    if regress:
-        model.add(Dense(1, activation="linear"))
-
-    # return our model
-    model.summary()
-
     return model
