@@ -58,10 +58,13 @@ def main():
     usb_li = usb_list()
     logging.info('End USB list')
     logging.info('Start Send data')
+    #0 -> postive 1 -> negative
     for i in usb_li:
         logging.info(f"Send data to {i.device}")
-        send_data(i.device, 115200, "-56")
-        send_data(i.device, 115200, "-88")
+        send_data(i.device, 115200, "1")
+        send_data(i.device, 115200, "56")
+        send_data(i.device, 115200, "1")
+        send_data(i.device, 115200, "88")
         logging.info(f"Send data to {i.device} end")
     logging.info('End Send data')
 
