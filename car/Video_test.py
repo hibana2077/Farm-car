@@ -30,15 +30,27 @@ def usb_list():
 
     for port in ports:
         logging.info(port)
+    return ports
+
+def send_data(port, baudrate, data):
+    with serial.Serial(port, baudrate, timeout=1) as ser:
+        ser.write(data.encode())  # 轉換為字節串並傳送
 
 def main():
     logging.info('Start Picture')
     take_picture()
     logging.info('End Picture')
     logging.info('Start USB list')
-    usb_list()
+    usb_li = usb_list()
     logging.info('End USB list')
+    logging.info('Start Send data')
+    send_data('COM3', 9600, 'Hello World')
+    logging.info('End Send data')
+    for i in usb_li:
+        print(i.device)
+    logging.info('End Send data')
 
 if __name__ == '__main__':
     logging.info('Start main')
     main()
+    logging.info('End main')
