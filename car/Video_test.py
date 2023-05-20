@@ -43,11 +43,11 @@ def send_data(port, baudrate, data):
         ser.write(data.encode())  # 轉換為字節串並傳送
 
 def read_data(port, baudrate):
-    serial = serial.Serial(port, baudrate, timeout=0.5)
+    ser = serial.Serial(port, baudrate, timeout=0.5)
     while True:
         data = ''
-        while serial.inWaiting() > 0:
-            data += serial.read(1).decode()
+        while ser.inWaiting() > 0:
+            data += ser.read(1).decode()
         if data != '':
             logging.info(data)
 
