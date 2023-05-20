@@ -45,11 +45,8 @@ def send_data(port, baudrate, data):
 def read_data(port, baudrate):
     ser = serial.Serial(port, baudrate, timeout=0.5)
     while True:
-        data = ''
-        while ser.inWaiting() > 0:
-            data += ser.read(1).decode()
-        if data != '':
-            print(data)
+        data = ser.readall()
+        print(data)
 
 def main():
     logging.info('Start Picture')
