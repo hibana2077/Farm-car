@@ -22,6 +22,12 @@ def take_picture():
     cap.release()
     cv.destroyAllWindows()
 
+'''
+ARC
+CP2102 -> /dev/USB0
+FT232 -> /dev/USB1 
+Baudrate -> 115200'''
+
 #usb device list
 def usb_list():
     import serial.tools.list_ports
@@ -35,6 +41,13 @@ def usb_list():
 def send_data(port, baudrate, data):
     with serial.Serial(port, baudrate, timeout=1) as ser:
         ser.write(data.encode())  # 轉換為字節串並傳送
+
+def read_data(port, baudrate):
+    with serial.Serial(port, baudrate, timeout=1) as ser:
+        while True:
+            data = ser.readline()
+            if data:
+                logging.info(data.decode())
 
 def main():
     logging.info('Start Picture')
@@ -54,3 +67,7 @@ if __name__ == '__main__':
     logging.info('Start main')
     main()
     logging.info('End main')
+    logging.info('Start Read data')
+    port = '/dev/ttyUSB0'
+    baudrate = 115200
+    read_data(port, baudrate)
