@@ -1,12 +1,11 @@
 '''
-Author: hibana2077 hibana2077@gmaill.com
-Date: 2023-05-20 19:49:38
-LastEditors: hibana2077 hibana2077@gmaill.com
-LastEditTime: 2023-05-20 20:12:33
-FilePath: /Farm-car/car/Video_test.py
-Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+pyusb
+pyserial
+opencv-python
 '''
+
 import logging
+import serial
 import os
 import cv2 as cv
 
@@ -23,10 +22,22 @@ def take_picture():
     cap.release()
     cv.destroyAllWindows()
 
+#usb device list
+def usb_list():
+    import serial.tools.list_ports
+
+    ports = serial.tools.list_ports.comports()
+
+    for port in ports:
+        logging.info(port)
+
 def main():
-    logging.info('Start')
+    logging.info('Start Picture')
     take_picture()
-    logging.info('End')
+    logging.info('End Picture')
+    logging.info('Start USB list')
+    usb_list()
+    logging.info('End USB list')
 
 if __name__ == '__main__':
     logging.info('Start main')
