@@ -45,8 +45,8 @@ def send_data(port, baudrate, data):
 def read_data(port, baudrate):
     with serial.Serial(port, baudrate,timeout=1) as ser:
         while True:
-            data = ser.readline()
-            logging.info(data.decode().rstrip())
+            for i in ser.read():
+                print(i)
 
 def main():
     logging.info('Start Picture')
