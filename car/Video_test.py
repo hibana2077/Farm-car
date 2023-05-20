@@ -49,7 +49,7 @@ def read_data(port, baudrate):
         while ser.inWaiting() > 0:
             data += ser.read(1)
         if data != '':
-            logging.info(data)
+            print(data)
 
 def main():
     logging.info('Start Picture')
