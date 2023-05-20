@@ -45,7 +45,9 @@ def main():
     logging.info('End USB list')
     logging.info('Start Send data')
     for i in usb_li:
-        print(i.device)
+        logging.info(f"Send data to {i.device}")
+        send_data(i.device, 115200, 'test')
+        logging.info(f"Send data to {i.device} end")
     logging.info('End Send data')
 
 if __name__ == '__main__':
