@@ -47,7 +47,7 @@ def read_data(port, baudrate):
     while True:
         data = ''
         while ser.inWaiting() > 0:
-            data += ser.read(1).decode()
+            data += ser.read(1)
         if data != '':
             logging.info(data)
 
