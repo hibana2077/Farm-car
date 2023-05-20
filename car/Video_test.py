@@ -48,6 +48,8 @@ def read_data(port, baudrate):
         data = ser.readall().decode()  # 讀取全部字節串
         print(data)
 
+
+
 def main():
     logging.info('Start Picture')
     take_picture()
@@ -59,6 +61,7 @@ def main():
     for i in usb_li:
         logging.info(f"Send data to {i.device}")
         send_data(i.device, 115200, "11")
+        send_data(i.device, 115200, "22")
         logging.info(f"Send data to {i.device} end")
     logging.info('End Send data')
 
