@@ -7,10 +7,8 @@ FilePath: /Farm-car/test_model/models.py
 Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 '''
 # import the necessary packages
-import torch
-from torchvision import models
 from keras.models import Sequential
-from keras.layers import BatchNormalization
+from keras.layers import BatchNormalization  
 from keras.layers import Conv2D, MaxPooling2D
 from keras.layers import Activation, Dropout, Dense
 from keras.layers import Flatten, Input
@@ -21,6 +19,9 @@ def create_mlp( dim, regress=False, name = 'Federated_Learning'):
         # define our MLP network
         model = Sequential()
         model.add(Dense(8, input_dim=dim, activation="relu"))
+        model.add(Dense(16, activation="relu"))
+        model.add(Dense(32, activation="relu"))
+        model.add(Dense(16, activation="relu"))
         model.add(Dense(4, activation="relu"))
 
         # check to see if the regression node should be added
