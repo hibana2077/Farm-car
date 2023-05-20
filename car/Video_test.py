@@ -44,8 +44,6 @@ def main():
     usb_li = usb_list()
     logging.info('End USB list')
     logging.info('Start Send data')
-    send_data('COM3', 9600, 'Hello World')
-    logging.info('End Send data')
     for i in usb_li:
         print(i.device)
     logging.info('End Send data')
