@@ -61,7 +61,7 @@ def main():
     logging.info('End USB list')
     logging.info('Start Send data')
     for i in usb_li:
-        if i.device == '/dev/ttyUSB0':
+        if i.device == '/dev/ttyUSB1':
             send_data(i.device, 115200, '11')
 
     logging.info('End Send data')
@@ -71,6 +71,6 @@ if __name__ == '__main__':
     main()
     logging.info('End main')
     logging.info('Start Read data')
-    port = '/dev/ttyUSB0'
+    port = '/dev/ttyUSB1'
     baudrate = 115200
     read_data(port, baudrate)
