@@ -60,8 +60,8 @@ def main():
     logging.info('Start Send data')
     for i in usb_li:
         logging.info(f"Send data to {i.device}")
-        send_data(i.device, 115200, "-11")
-        send_data(i.device, 115200, "22")
+        send_data(i.device, 115200, "-56")
+        send_data(i.device, 115200, "-88")
         logging.info(f"Send data to {i.device} end")
     logging.info('End Send data')
 
