@@ -41,10 +41,6 @@ def usb_list():
 def send_data(port, baudrate, data):
     with serial.Serial(port, baudrate, timeout=1) as ser:
         ser.write(data.encode())  # 轉換為字節串並傳送
-        logging.info(f"Send data to {port} : {data}")
-        recive_data = ser.readline(ser.in_waiting or 1)
-        logging.info(f"Recive data from {port} : {recive_data}")
-
 
 def read_data(port, baudrate):
     ser = serial.Serial(port, baudrate, timeout=0.5)
@@ -61,9 +57,9 @@ def main():
     logging.info('End USB list')
     logging.info('Start Send data')
     for i in usb_li:
-        if i.device == '/dev/ttyUSB1':
-            send_data(i.device, 115200, '11')
-
+        logging.info(f"Send data to {i.device}")
+        send_data(i.device, 115200, 'test')
+        logging.info(f"Send data to {i.device} end")
     logging.info('End Send data')
 
 if __name__ == '__main__':
