@@ -40,7 +40,7 @@ def usb_list():
 
 def send_data(port, baudrate, data):
     with serial.Serial(port, baudrate, timeout=1) as ser:
-        ser.write(data)  # 轉換為字節串並傳送
+        ser.write(data.encode())  # 轉換為字節串並傳送
 
 def read_data(port, baudrate):
     ser = serial.Serial(port, baudrate, timeout=0.5)
@@ -58,8 +58,7 @@ def main():
     logging.info('Start Send data')
     for i in usb_li:
         logging.info(f"Send data to {i.device}")
-        send_data(i.device, 115200, 18)
-        send_data(i.device, 115200, 2)
+        send_data(i.device, 115200, "11")
         logging.info(f"Send data to {i.device} end")
     logging.info('End Send data')
 
