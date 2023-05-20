@@ -67,6 +67,6 @@ if __name__ == '__main__':
     main()
     logging.info('End main')
     logging.info('Start Read data')
-    port = '/dev/ttyUSB0'
+    port = '/dev/ttyUSB1'
     baudrate = 115200
     read_data(port, baudrate)
