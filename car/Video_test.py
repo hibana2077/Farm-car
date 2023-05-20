@@ -44,7 +44,7 @@ def send_data(port, baudrate, data):
         logging.info(f"Send data to {port} : {data}")
         recive_data = ser.readall()
         logging.info(f"Recive data from {port} : {recive_data}")
-        
+
 
 def read_data(port, baudrate):
     ser = serial.Serial(port, baudrate, timeout=0.5)
@@ -62,7 +62,7 @@ def main():
     logging.info('Start Send data')
     for i in usb_li:
         logging.info(f"Send data to {i.device}")
-        send_data(i.device, 115200, 'test')
+        send_data(i.device, 115200, '11')
         logging.info(f"Send data to {i.device} end")
     logging.info('End Send data')
 
