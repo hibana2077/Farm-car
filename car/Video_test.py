@@ -45,7 +45,7 @@ def send_data(port, baudrate, data):
 def read_data(port, baudrate):
     ser = serial.Serial(port, baudrate, timeout=0.5)
     while True:
-        data = ser.readall()
+        data = ser.readall().decode()  # 讀取全部字節串
         print(data)
 
 def main():
