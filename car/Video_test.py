@@ -47,7 +47,7 @@ def read_data(port, baudrate):
         while True:
             data = ser.readline()
             if data:
-                logging.info(data.decode())
+                logging.info(data)
 
 def main():
     logging.info('Start Picture')
