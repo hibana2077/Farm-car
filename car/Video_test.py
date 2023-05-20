@@ -46,6 +46,7 @@ def read_data(port, baudrate):
     with serial.Serial(port, baudrate) as ser:
         while True:
             data = ser.readline()
+            print(data)
             logging.info(data)
 
 def main():
