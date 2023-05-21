@@ -1,3 +1,11 @@
+'''
+Author: hibana2077 hibana2077@gmaill.com
+Date: 2023-05-20 19:49:22
+LastEditors: hibana2077 hibana2077@gmaill.com
+LastEditTime: 2023-05-21 20:02:51
+FilePath: /Farm-car/car/uart_contral.py
+Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+'''
 import serial
 import serial.tools.list_ports
 import os
@@ -9,45 +17,14 @@ logging.basicConfig(level=logging.INFO,
                     format='%(asctime)s - %(filename)s[line:%(lineno)d] - %(levelname)s: %(message)s')
 logging.info('Start print log')
 
-#list all port
-def list_all_port():
-    port_list = list(serial.tools.list_ports.comports())
-    if len(port_list) == 0:
-        logging.info('No port found')
-        return None
-    else:
-        for i in range(0,len(port_list)):
-            logging.info(port_list[i])
-        return port_list
+#forword function
+def forword(step,port,boudrate):
+    with serial.Serial(port,boudrate,timeout=1) as ser:
+        ser.write(f"forword {step}".encode())
+    logging.info(f"forword {step}")
 
-
-# ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=1) #name,baudrate,timeout
-
-# ser.write(b'hello') #send data
-
-# data = ser.readline() #read data
-
-# print(data)
-
-# ser.close() #close port
-
-def send_data(data:str):
-    ser = serial.Serial('COM3', 9600, timeout=1) #name,baudrate,timeout
-    ser.write(data.encode('utf-8')) #send data
-    ser.close() #close port
-
-if __name__ == '__main__':
-    while True:
-        try:
-            list_result = list_all_port()
-            if list_result is not None:
-                send_data('hello')
-            time.sleep(1)
-        except KeyboardInterrupt:
-            logging.info('KeyboardInterrupt detected')
-            break
-        except Exception as e:
-            logging.error(e)
-            break
-        finally:
-            logging.info('Run finally')
+if __name__ == "__main__":
+    #get usb device list
+    ports = serial.tools.list_ports.comports()
+    for t in ports:
+        logging.info(t)
