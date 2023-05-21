@@ -31,3 +31,16 @@ for i in THS_list:
         print(f"Try {i} done")
         time.sleep(1)
     except Exception as e:print(e)
+
+for i in S_list:
+    try:
+        print(f"Try {i}")
+        uart = serial.Serial(
+            port=i, 
+            baudrate=9600,
+            timeout=1
+        )
+        uart.write(b'Forwd 1000\r\n')
+        print(f"Try {i} done")
+        time.sleep(1)
+    except Exception as e:print(e)
