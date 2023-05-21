@@ -98,7 +98,8 @@ def send_data(port, baudrate, data):
 def send_picture(port, baudrate, picture):
     with serial.Serial(port, baudrate, timeout=1) as ser:
         for t in picture:
-            ser.write(t.encode())
+            string = str(t)
+            ser.write(string.encode())  # 轉換為字節串並傳送
 
 def read_data(port, baudrate):
     ser = serial.Serial(port, baudrate, timeout=0.5)
