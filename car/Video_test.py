@@ -6,7 +6,9 @@ opencv-python
 
 import logging
 import serial
-import os
+# import os
+# import pathlib
+# import tensorflow as tf
 import cv2 as cv
 
 #logging
@@ -58,7 +60,7 @@ def main():
     usb_li = usb_list()
     logging.info('End USB list')
     logging.info('Start Send data')
-    #0 -> postive 1 -> negative
+    #0 -> neg 1 -> Postive
     for i in usb_li:
         logging.info(f"Send data to {i.device}")
         send_data(i.device, 115200, "1")
