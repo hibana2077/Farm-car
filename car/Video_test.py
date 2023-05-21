@@ -72,6 +72,7 @@ def main():
 
 def while_input(port , baudrate):
     while True:
+        read_data(port, baudrate)
         ins = input("input:")
         if ins == "exit":
             break
