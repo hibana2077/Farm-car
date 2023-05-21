@@ -180,7 +180,7 @@ if __name__ == '__main__':
     sleep(1.5)
     logging.info('CNN result : {}'.format([uniform(0, 1), uniform(0, 1), uniform(0, 1), uniform(0, 1), uniform(0, 1)]))
     logging.info('Send Sensor data to ARC using : {}'.format(port))
-    sensor_data =(row_data_X.iloc[idx].values).to_list()
+    sensor_data =(row_data_X.iloc[idx].values)
     logger.info(sensor_data)
     send_data(port, baudrate, "1" if sensor_data[0] >= 0 else "0")
     send_data(port, baudrate, str(sensor_data[0])[1:])
