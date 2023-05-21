@@ -48,7 +48,7 @@ def read_data(port, baudrate):
     ser = serial.Serial(port, baudrate, timeout=0.5)
     while True:
         data = ser.readall().decode()  # 讀取全部字節串
-        print(data)
+        logging.info(data)
 
 
 
@@ -60,21 +60,34 @@ def main():
     usb_li = usb_list()
     logging.info('End USB list')
     logging.info('Start Send data')
-    #0 -> neg 1 -> Postive
+    #0 -> postive 1 -> negative
     for i in usb_li:
         logging.info(f"Send data to {i.device}")
-        send_data(i.device, 115200, "0")
+        send_data(i.device, 115200, "1")
         send_data(i.device, 115200, "56")
-        send_data(i.device, 115200, "0")
+        send_data(i.device, 115200, "1")
         send_data(i.device, 115200, "88")
         logging.info(f"Send data to {i.device} end")
     logging.info('End Send data')
 
+def while_input(port , baudrate):
+    while True:
+        ins = input("input:")
+        if ins == "exit":
+            break
+        send_data(port, baudrate, ins)
+        read_data(port, baudrate)
+
 if __name__ == '__main__':
-    logging.info('Start main')
-    main()
-    logging.info('End main')
-    logging.info('Start Read data')
+    # logging.info('Start main')
+    # main()
+    # logging.info('End main')
+    # logging.info('Start Read data')
+    # port = '/dev/ttyUSB1'
+    # baudrate = 115200
+    # read_data(port, baudrate)
+    logging.info('Start While input')
     port = '/dev/ttyUSB1'
     baudrate = 115200
-    read_data(port, baudrate)
+    while_input(port, baudrate)
+    logging.info('End While input')
