@@ -143,7 +143,7 @@ if __name__ == '__main__':
     from time import sleep
     logging.info('Start')
     #model_loc 
-    model = tf.keras.models.load_model('model.h5')
+    model = tf.keras.models.load_model('../model/model.h5')
 
     #data loc
     row_data_X = read_csv('../data/ans/plantA.csv', usecols=[1,2], engine='python', skipfooter=0)
